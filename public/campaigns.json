@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "title": "Warm Clothes for Chittagong Hills",
+    "image": "https://ecdn.dhakatribune.net/contents/cache/images/400x225x1/uploads/dten/2019/02/chittagong-slum-fire-4-1550404267592.jpg",
+    "description": "Collecting warm clothes for the underprivileged families in the Chittagong Hill Tracts region.",
+    "status": "Active",
+    "contactInfo": "contact@charity.org",
+    "division": "Chittagong"
+  },
+  {
+    "id": 2,
+    "title": "Dhaka Winter Drive",
+    "image": "https://www.thedailystar.net/sites/default/files/styles/big_202/public/feature/images/korail-slum-social-distancing.jpg",
+    "description": "A winter clothing drive to help the homeless and low-income families in Dhaka city.",
+    "status": "Active",
+    "contactInfo": "info@dhakacharity.com",
+    "division": "Dhaka"
+  },
+  {
+    "id": 3,
+    "title": "Sylhet Warmth Initiative",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Jaflong_Sylhet.jpg/1200px-Jaflong_Sylhet.jpg",
+    "description": "Providing warm clothing to the needy in Sylhet during the cold winter months.",
+    "status": "Active",
+    "contactInfo": "support@sylhetcharity.org",
+    "division": "Sylhet"
+  },
+  {
+    "id": 4,
+    "title": "Winter Relief for Rajshahi",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Rajshahi_city_%283%29.jpg/1200px-Rajshahi_city_%283%29.jpg",
+    "description": "Collecting winter clothing for the rural areas of Rajshahi division.",
+    "status": "Active",
+    "contactInfo": "help@rajshahicharity.com",
+    "division": "Rajshahi"
+  },
+  {
+    "id": 5,
+    "title": "Comilla Cold Weather Assistance",
+    "image": "https://www.touristplaces.com.bd/images/pp/7/p145498.jpg",
+    "description": "Gathering donations to help the underprivileged in Comilla stay warm during winter.",
+    "status": "Active",
+    "contactInfo": "contact@comillacharity.org",
+    "division": "Comilla"
+  },
+  {
+    "id": 6,
+    "title": "Barisal Blanket Drive",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Barisal_Launch_Terninal.jpg/1200px-Barisal_Launch_Terninal.jpg",
+    "description": "Donating blankets to the needy families in Barisal to help them combat the cold.",
+    "status": "Active",
+    "contactInfo": "support@barisalcharity.com",
+    "division": "Barisal"
+  }
+]

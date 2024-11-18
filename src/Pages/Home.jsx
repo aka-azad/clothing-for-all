@@ -8,10 +8,12 @@ const Home = () => {
   return (
     <div>
       <Banner />
-      <AboutUs />
-      <HowItWorks />
-      <SuccessStories/>
-      <UpcomingEvents/>
+      <div className="max-w-[1200px] mx-auto">
+        <AboutUs />
+        <HowItWorks />
+        <SuccessStories />
+        <UpcomingEvents />
+      </div>
     </div>
   );
 };
