@@ -4,29 +4,50 @@ import Home from "../Pages/Home";
 import DonationCampaigns from "../Pages/DonationCampaign";
 import CampaignDetails from "../Components/CampaignDetails";
 import ErrorPage from "../Components/ErrorPage";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
 
-const routes = createBrowserRouter([
+const routes = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Root></Root>,
+      children: [
+        { path: "/", element: <Home /> },
+        {
+          path: "donation-campaigns",
+          element: <DonationCampaigns />,
+          loader: () => fetch("/campaigns.json"),
+        },
+        {
+          path: "campaign/:id",
+          element: <CampaignDetails />,
+          loader: () => fetch("/campaigns.json"),
+        },
+        {
+          path: "login",
+          element: <Login />,
+        },
+        {
+          path: "register",
+          element: <Register />,
+        },
+        {
+          path: "*",
+          element: <ErrorPage />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Root></Root>,
-    children: [
-      { path: "/", element: <Home /> },
-      {
-        path: "donation-campaigns",
-        element: <DonationCampaigns />,
-        loader: () => fetch("/campaigns.json"),
-      },
-      {
-        path: "campaign/:id",
-        element: <CampaignDetails />,
-        loader: () => fetch("/campaigns.json"),
-      },
-      {
-        path: "*",
-        element: <ErrorPage />,
-      },
-    ],
-  },
-]);
+    future: {
+      v7_relativeSplatPath: true,
+      v7_fetcherPersist: true,
+      v7_normalizeFormMethod: true,
+      v7_partialHydration: true,
+      v7_skipActionErrorRevalidation: true,
+    },
+  }
+);
 
 export default routes;

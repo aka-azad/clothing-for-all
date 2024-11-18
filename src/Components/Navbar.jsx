@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import orgLogo from "../assets/org-logo.png";
 const Navbar = () => {
   const links = (
@@ -10,10 +10,10 @@ const Navbar = () => {
         <NavLink to={"/donation-campaigns"}>Donation Campaigns</NavLink>
       </li>
       <li>
-        <NavLink to={'/how-to-help'}>How to Help</NavLink>
+        <NavLink to={"/how-to-help"}>How to Help</NavLink>
       </li>
       <li>
-        <NavLink to={'/dashboard'}>Dashboard</NavLink>
+        <NavLink to={"/dashboard"}>Dashboard</NavLink>
       </li>
     </>
   );
@@ -70,7 +70,6 @@ const Navbar = () => {
             <li>
               <a className="justify-between">
                 Profile
-                <span className="badge">New</span>
               </a>
             </li>
             <li>
@@ -81,7 +80,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn">Login</a>
+        <Link to={"/login"} className="btn">
+          Login
+        </Link>
       </div>
     </div>
   );
