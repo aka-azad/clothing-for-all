@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
+import "animate.css";
 
 const DonationCard = ({ campaign }) => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const DonationCard = ({ campaign }) => {
   };
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-base-100 shadow-xl animate__animated animate__bounce">
       <figure>
         <img
           src={campaign.image}
@@ -22,7 +23,10 @@ const DonationCard = ({ campaign }) => {
         <p className="text-gray-700">{campaign.description}</p>
         <p className="text-gray-500">Division: {campaign.division}</p>
         <div className="card-actions justify-end">
-          <button onClick={handleDonateClick} className="btn btn-primary">
+          <button
+            onClick={handleDonateClick}
+            className="btn btn-primary w-full"
+          >
             Donate Now
           </button>
         </div>
@@ -31,6 +35,6 @@ const DonationCard = ({ campaign }) => {
   );
 };
 DonationCard.propTypes = {
-    campaign: PropTypes.object.isRequired
-}
+  campaign: PropTypes.object.isRequired,
+};
 export default DonationCard;
