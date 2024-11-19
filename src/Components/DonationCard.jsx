@@ -1,12 +1,22 @@
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import "animate.css";
+import { useContext } from "react";
+import { AuthContext } from "./Provider/AuthProvider";
+import { ModalContext } from "./Provider/ModalProvider";
 
 const DonationCard = ({ campaign }) => {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+  const { openModal, setNavigateLink } = useContext(ModalContext);
 
   const handleDonateClick = () => {
-    navigate(`/campaign/${campaign.id}`);
+    if (user) {
+      navigate(`/campaign/${campaign.id}`);
+    } else {
+      openModal();
+      setNavigateLink(`/campaign/${campaign.id}`);
+    }
   };
 
   return (

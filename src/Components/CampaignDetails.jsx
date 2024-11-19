@@ -1,5 +1,5 @@
 // src/components/CampaignDetails.js
-import { useState } from "react";
+import {  useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,6 +13,7 @@ const CampaignDetails = () => {
   const [itemType, setItemType] = useState("");
   const [pickupLocation, setPickupLocation] = useState("");
   const [notes, setNotes] = useState("");
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

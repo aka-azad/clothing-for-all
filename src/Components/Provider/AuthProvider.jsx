@@ -15,7 +15,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const googleProvider = new GoogleAuthProvider
+  const googleProvider = new GoogleAuthProvider();
 
   const loginWithEmail = (email, password) => {
     setLoading(true);
@@ -26,11 +26,11 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const signinWithGoogle = ()=>{
-    signInWithPopup(auth, googleProvider)
-  }
+  const signinWithGoogle = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
   const signOutUser = () => {
-    signOut(auth);
+    return signOut(auth);
   };
 
   useEffect(() => {
@@ -40,12 +40,9 @@ const AuthProvider = ({ children }) => {
         setLoading(false);
       } else {
         setUser(null);
-
-        console.log("logged out");
       }
-
-      return () => unsubscribe();
     });
+    return () => unsubscribe();
   }, []);
   const values = {
     user,
@@ -55,7 +52,6 @@ const AuthProvider = ({ children }) => {
     signinWithGoogle,
     signOutUser,
   };
-  console.log(user)
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };

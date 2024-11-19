@@ -6,6 +6,9 @@ import CampaignDetails from "../Components/CampaignDetails";
 import ErrorPage from "../Components/ErrorPage";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Pages/Dashboard";
+import BypassToHomeRoute from "./BypassHomeRoute";
 
 const routes = createBrowserRouter(
   [
@@ -21,16 +24,36 @@ const routes = createBrowserRouter(
         },
         {
           path: "campaign/:id",
-          element: <CampaignDetails />,
+          element: (
+            <PrivateRoute>
+              <CampaignDetails />
+            </PrivateRoute>
+          ),
           loader: () => fetch("/campaigns.json"),
         },
         {
           path: "login",
-          element: <Login />,
+          element: (
+            <BypassToHomeRoute>
+              <Login />
+            </BypassToHomeRoute>
+          ),
         },
         {
           path: "register",
-          element: <Register />,
+          element: (
+            <BypassToHomeRoute>
+              <Register />
+            </BypassToHomeRoute>
+          ),
+        },
+        {
+          path: "dashboard",
+          element: (
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          ),
         },
         {
           path: "*",
