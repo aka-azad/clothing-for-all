@@ -1,14 +1,19 @@
-// src/components/Login.js
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Components/Provider/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
 
+  const { loginWithEmail } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userEmail = e.target.email.value
-    const userPassword = e.target.password.value
-    // Mock login logic
+    const userEmail = e.target.email.value;
+    const userPassword = e.target.password.value;
+    loginWithEmail(userEmail, userPassword)
+      .then((res) => console.log(res.user))
+      .catch((err) => console.log(err));
     console.log("Logging in with", userEmail, userPassword);
     navigate("/");
   };
@@ -38,7 +43,7 @@ const Login = () => {
             </label>
             <input
               type="password"
-               name="password"
+              name="password"
               placeholder="Password"
               className="input input-bordered w-full"
               required
