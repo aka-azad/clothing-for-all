@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Components/Provider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const { loginWithEmail } = useContext(AuthContext);
+  const { loginWithEmail, signinWithGoogle } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,11 +21,11 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-blue-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+      <div className="bg-white my-6 p-8 rounded-lg shadow-lg w-96">
         <h2 className="text-4xl font-bold text-center text-blue-600 mb-6">
           Welcome Back
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6 mb-4">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -53,9 +54,20 @@ const Login = () => {
             Log In
           </button>
         </form>
+        <div className="divider">OR</div>
+        <div className="w-fit mx-auto">
+          <button
+            onClick={signinWithGoogle} className="btn btn-circle mb-5 mx-auto">
+            <FaGoogle className="text-blue-600 text-xl" />
+          </button>
+        </div>
+        <hr className="border" />
         <div className="text-center mt-6">
           <p className="text-gray-600">Don&apos;t have an account?</p>
-          <Link to="/register" className="text-blue-600 hover:underline">
+          <Link
+            to="/register"
+            className="text-blue-600 hover:underline"
+          >
             Register Now
           </Link>
         </div>
