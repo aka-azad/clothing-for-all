@@ -3,11 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Components/Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../firebase/firebase.config";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const navigate = useNavigate();
   const [errorMassage, setErrorMassage] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { user, signUpWithEmail, signinWithGoogle } = useContext(AuthContext);
 
@@ -96,12 +97,21 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input
-                type="password"
-                name="password"
-                className="input input-bordered w-full"
-                required
-              />
+
+              <label className="input input-bordered flex items-center gap-2">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="w-full"
+                  required
+                />
+                <div
+                  onClick={() => setShowPassword(!showPassword)}
+                  className=""
+                >
+                  {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                </div>
+              </label>
             </div>
             {errorMassage && (
               <p className="text-sm text-red-600">{errorMassage}</p>
