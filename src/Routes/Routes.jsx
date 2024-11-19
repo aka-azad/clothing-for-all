@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard";
 import BypassToHomeRoute from "./BypassHomeRoute";
 import ResetPassword from "../Pages/ResetPassword";
+import UpdateProfile from "../Pages/UpdateProfile";
 
 const routes = createBrowserRouter(
   [
@@ -59,6 +60,10 @@ const routes = createBrowserRouter(
         {
           path: "reset-password",
           element: <ResetPassword />,
+        },
+        {
+          path: "update-profile",
+          element: <UpdateProfile />,
         },
         {
           path: "*",

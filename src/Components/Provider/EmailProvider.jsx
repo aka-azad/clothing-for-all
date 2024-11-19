@@ -12,6 +12,6 @@ const EmailProvider = ({ children }) => {
 };
 
 EmailProvider.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 export default EmailProvider;

@@ -21,6 +21,6 @@ const ModalProvider = ({ children }) => {
   );
 };
 ModalProvider.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 export default ModalProvider;

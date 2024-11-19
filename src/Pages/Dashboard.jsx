@@ -2,21 +2,17 @@ import { Link } from "react-router-dom";
 import auth from "../firebase/firebase.config";
 
 const Dashboard = () => {
-    const user = auth.currentUser
-    console.log(user)
+  const user = auth.currentUser;
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-        
         <h2 className="text-4xl font-bold text-left text-blue-600 mb-6">
           Welcome
         </h2>
         <h2 className="text-4xl font-bold text-end text-blue-600 mb-6">
-         {user.displayName}!
+          {user.displayName}!
         </h2>
         <div className="text-center mb-6">
-          
           <img
             src={user.photoURL}
             alt="User Photo"

@@ -56,6 +56,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
+        
         {user ? (
           <div className="dropdown dropdown-end">
             <div

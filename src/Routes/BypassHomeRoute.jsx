@@ -12,6 +12,6 @@ const BypassToHomeRoute = ({ children }) => {
   return <Navigate to={"/"} />;
 };
 BypassToHomeRoute.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 export default BypassToHomeRoute;
