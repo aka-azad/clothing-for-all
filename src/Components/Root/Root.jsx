@@ -19,7 +19,7 @@ const Root = () => {
         isOpen={isModalOpen}
         onClose={closeModal}
         navigateLink={navigateLink}
-      />{" "}
+      />
       <Footer />
     </div>
   );

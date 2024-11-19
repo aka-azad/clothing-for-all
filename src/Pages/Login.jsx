@@ -1,15 +1,19 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Components/Provider/AuthProvider";
-import { FaGoogle } from "react-icons/fa";
+import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { EmailContext } from "../Components/Provider/EmailProvider";
 
 const Login = () => {
+  const {setEmailValue}= useContext(EmailContext)
   const navigate = useNavigate();
-  const [errorMassage, setErrorMassage] = useState(null);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
+  const [ErrorMessage, setErrorMessage] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { loginWithEmail, signinWithGoogle } = useContext(AuthContext);
   const validatePassword = (password) => {
-    /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password);
+    return /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password);
   };
 
   const handleSubmit = (e) => {
@@ -18,10 +22,15 @@ const Login = () => {
     const userPassword = e.target.password.value;
     if (validatePassword(userPassword)) {
       loginWithEmail(userEmail, userPassword)
-        .then(() => navigate("/"))
-        .catch((err) => console.log(err));
+        .then(() => {
+          navigate("/");
+          setErrorMessage(null);
+        })
+        .catch((err) => {
+          setErrorMessage(err.message);
+        });
     } else {
-      setErrorMassage(
+      setPasswordErrorMessage(
         "Password must contain one uppercase, one lowercase and at least 6 character"
       );
     }
@@ -40,7 +49,7 @@ const Login = () => {
             </label>
             <input
               type="email"
-              name="email"
+              name="email" onChange={(e)=>setEmailValue(e.target.value)}
               placeholder="Your Email"
               className="input input-bordered w-full"
               required
@@ -50,20 +59,35 @@ const Login = () => {
             <label className="label">
               <span className="label-text">Password</span>
             </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              className="input input-bordered w-full"
-              required
-            />
+
+            <label className="input input-bordered flex items-center gap-2">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Password"
+                className="w-full"
+                required
+              />
+              <div onClick={() => setShowPassword(!showPassword)} className="">
+                {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+              </div>
+            </label>
           </div>
-          {errorMassage && (
-            <p className="text-sm text-red-600">{errorMassage}</p>
+          <Link
+            to={"/reset-password"}
+            className="text-blue-600 mt-3 text-sm hover:underline"
+          >
+            Forgot Password
+          </Link>
+          {passwordErrorMessage && (
+            <p className="text-sm text-red-600">{passwordErrorMessage}</p>
           )}
           <button type="submit" className="btn btn-primary w-full">
             Log In
           </button>
+          {ErrorMessage && (
+            <p className="text-sm text-red-600">{ErrorMessage}</p>
+          )}
         </form>
         <div className="divider">OR</div>
         <div className="w-fit mx-auto">

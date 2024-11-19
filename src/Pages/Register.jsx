@@ -7,13 +7,14 @@ import { FaGoogle, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const navigate = useNavigate();
-  const [errorMassage, setErrorMassage] = useState(null);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
   const { user, signUpWithEmail, signinWithGoogle } = useContext(AuthContext);
 
   const validatePassword = (password) => {
-    /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password);
+    return /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password);
   };
 
   const handleSubmit = (e) => {
@@ -22,6 +23,7 @@ const Register = () => {
     const userPhoto = e.target.photoUrl.value;
     const userEmail = e.target.email.value;
     const userPassword = e.target.password.value;
+    console.log(validatePassword(userPassword));
     if (validatePassword(userPassword)) {
       signUpWithEmail(userEmail, userPassword)
         .then(() => {
@@ -29,11 +31,14 @@ const Register = () => {
             displayName: userName,
             photoURL: userPhoto,
           });
+          setErrorMessage(null);
           navigate("/");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setErrorMessage(err.message);
+        });
     } else {
-      setErrorMassage(
+      setPasswordErrorMessage(
         "Password must contain one uppercase, one lowercase and at least 6 character"
       );
     }
@@ -68,6 +73,7 @@ const Register = () => {
               <input
                 type="text"
                 name="name"
+                placeholder="Your Full Name"
                 className="input input-bordered w-full"
                 required
               />
@@ -79,6 +85,7 @@ const Register = () => {
               <input
                 type="url"
                 name="photoUrl"
+                placeholder="Your Photo URL"
                 className="input input-bordered w-full"
               />
             </div>
@@ -88,6 +95,7 @@ const Register = () => {
               </label>
               <input
                 type="email"
+                placeholder="Your Email"
                 name="email"
                 className="input input-bordered w-full"
                 required
@@ -102,6 +110,7 @@ const Register = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
+                  placeholder="Password"
                   className="w-full"
                   required
                 />
@@ -113,13 +122,16 @@ const Register = () => {
                 </div>
               </label>
             </div>
-            {errorMassage && (
-              <p className="text-sm text-red-600">{errorMassage}</p>
+            {passwordErrorMessage && (
+              <p className="text-sm text-red-600">{passwordErrorMessage}</p>
             )}
 
             <button type="submit" className="btn btn-primary w-full">
               Register
             </button>
+            {errorMessage && (
+              <p className="text-sm text-red-600">{errorMessage}</p>
+            )}
           </form>
           <div className="divider">OR</div>
           <div className="w-fit mx-auto">

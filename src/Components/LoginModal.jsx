@@ -54,6 +54,7 @@ const LoginModal = ({ isOpen, onClose, navigateLink }) => {
                 <input
                   type="email"
                   name="email"
+                  placeholder="Enter Email"
                   className="input input-bordered w-full"
                   required
                 />
@@ -64,6 +65,7 @@ const LoginModal = ({ isOpen, onClose, navigateLink }) => {
                 </label>
                 <input
                   type="password"
+                  placeholder="Enter Password"
                   name="password"
                   className="input input-bordered w-full"
                   required

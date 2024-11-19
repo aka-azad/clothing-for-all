@@ -9,6 +9,7 @@ import Register from "../Pages/Register";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Pages/Dashboard";
 import BypassToHomeRoute from "./BypassHomeRoute";
+import ResetPassword from "../Pages/ResetPassword";
 
 const routes = createBrowserRouter(
   [
@@ -54,6 +55,10 @@ const routes = createBrowserRouter(
               <Dashboard />
             </PrivateRoute>
           ),
+        },
+        {
+          path: "reset-password",
+          element: <ResetPassword />,
         },
         {
           path: "*",
