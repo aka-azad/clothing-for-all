@@ -15,12 +15,26 @@ const Navbar = () => {
       <li>
         <NavLink to={"/how-to-help"}>How to Help</NavLink>
       </li>
-     {
-      user && <li>
-        <NavLink to={"/dashboard"}>Dashboard</NavLink>
+      {user && (
+        <li>
+          <NavLink to={"/dashboard"}>Dashboard</NavLink>
+        </li>
+      )}
+    </>
+  );
+  const profileLinks = (
+    <>
+      <li>
+        <NavLink to={"/dashboard"}>Profile</NavLink>
       </li>
-     }
-      
+      <li>
+        <NavLink to={"/update-profile"}>Update Profile</NavLink>
+      </li>
+      <li>
+        <Link onClick={signOutUser} to={"/"}>
+          Logout
+        </Link>
+      </li>
     </>
   );
   return (
@@ -56,7 +70,6 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        
         {user ? (
           <div className="dropdown dropdown-end">
             <div
@@ -65,14 +78,19 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img className="w-full" alt={user.displayName} src={user.photoURL} />
+                <img
+                  className="w-full"
+                  alt={user.displayName}
+                  src={user.photoURL}
+                />
               </div>
             </div>
             <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li>
+              {profileLinks}
+              {/* <li>
                 <a>Profile</a>
               </li>
               <li>
@@ -80,7 +98,7 @@ const Navbar = () => {
               </li>
               <li>
                 <p onClick={signOutUser}>Logout</p>
-              </li>
+              </li> */}
             </ul>
           </div>
         ) : (

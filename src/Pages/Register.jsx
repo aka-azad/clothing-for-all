@@ -78,17 +78,7 @@ const Register = () => {
                 required
               />
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo URL</span>
-              </label>
-              <input
-                type="url"
-                name="photoUrl"
-                placeholder="Your Photo URL"
-                className="input input-bordered w-full"
-              />
-            </div>
+           
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -99,6 +89,17 @@ const Register = () => {
                 name="email"
                 className="input input-bordered w-full"
                 required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                type="url"
+                name="photoUrl"
+                placeholder="Your Photo URL"
+                className="input input-bordered w-full"
               />
             </div>
             <div className="form-control">

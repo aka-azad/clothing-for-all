@@ -1,9 +1,9 @@
 // src/components/CampaignDetails.js
-import {  useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import 'animate.css'
+import "animate.css";
 
 const CampaignDetails = () => {
   const { id } = useParams();
@@ -13,7 +13,6 @@ const CampaignDetails = () => {
   const [itemType, setItemType] = useState("");
   const [pickupLocation, setPickupLocation] = useState("");
   const [notes, setNotes] = useState("");
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +24,16 @@ const CampaignDetails = () => {
   };
 
   if (!campaign) {
-    return <div className=" animate__animated animate__bounce">Campaign not found</div>;
+    return (
+      <div className="flex flex-col justify-center items-center">
+        <div className=" my-6 animate__animated animate__bounce text-center font-bold text-2xl text-blue-500">
+          Campaign not found
+        </div>
+        <Link to={"/donation-campaigns"} className="btn btn-primary">
+          Sell all Donation Campaigns
+        </Link>
+      </div>
+    );
   }
 
   return (
@@ -71,7 +79,9 @@ const CampaignDetails = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 mb-2">Pickup Location</label>
+              <label className="block text-gray-700 mb-2">
+                Pickup Location
+              </label>
               <input
                 type="text"
                 value={pickupLocation}
@@ -81,7 +91,9 @@ const CampaignDetails = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700 mb-2">Additional Notes</label>
+              <label className="block text-gray-700 mb-2">
+                Additional Notes
+              </label>
               <textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
@@ -92,7 +104,6 @@ const CampaignDetails = () => {
               Submit
             </button>
           </form>
-          <ToastContainer />
         </div>
       </div>
     </div>
