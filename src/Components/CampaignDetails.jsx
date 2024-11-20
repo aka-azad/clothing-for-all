@@ -1,7 +1,6 @@
-// src/components/CampaignDetails.js
 import { useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "animate.css";
 
