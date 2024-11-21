@@ -11,6 +11,7 @@ import Dashboard from "../Pages/Dashboard";
 import BypassToHomeRoute from "./BypassHomeRoute";
 import ResetPassword from "../Pages/ResetPassword";
 import UpdateProfile from "../Pages/UpdateProfile";
+import HowToHelp from "../Pages/HowToHelp";
 
 const routes = createBrowserRouter(
   [
@@ -23,6 +24,10 @@ const routes = createBrowserRouter(
           path: "donation-campaigns",
           element: <DonationCampaigns />,
           loader: () => fetch("/campaigns.json"),
+        },
+        {
+          path: "how-to-help",
+          element: <HowToHelp />,
         },
         {
           path: "campaign/:id",
