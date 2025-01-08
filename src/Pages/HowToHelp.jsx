@@ -7,7 +7,8 @@ const HowToHelp = () => {
         </h1>
         <p className="mb-4">
           Your support can make a significant impact on the lives of those in
-          need. Here are several ways you can help the Winter Donation
+          need. Here are several ways you can help the{" "}
+          <strong className="text-blue-500"> Clothing For All</strong>{" "}
           organization:
         </p>
 
